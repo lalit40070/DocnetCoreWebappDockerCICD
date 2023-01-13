@@ -61,6 +61,9 @@ stages:
       - task: CmdLine@2
         inputs:
           script: 'ssh root@deployment docker run -itd $(imageName)'
+      - task: CmdLine@2
+        inputs:
+          script: 'echo "test message"'
 # - stage: Deployment
 #   dependsOn: "build"
 #   displayName: Deployment
