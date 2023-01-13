@@ -51,7 +51,7 @@ stages:
           restartPolicy: always
       - task: CmdLine@2
         inputs:
-          script: 'ssh root@deployment docker run -itd $(imageName)'
+          script: 'ssh root@deployment docker run -itd --name master$(imageName) $(imageName)'
       - task: CmdLine@2
         inputs:
           script: 'echo "test message"'
