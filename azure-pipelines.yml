@@ -4,7 +4,7 @@
 # https://aka.ms/yaml
 resources:
    repositories:
-     - repository: DocnetCoreWebappDockerCICD 
+     - repository: 'DocnetCoreWebappDockerCICD' 
        type: github
        endpoint: 'github.com_lalit40070'
        ref: master
