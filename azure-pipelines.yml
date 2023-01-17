@@ -2,23 +2,25 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
-# resources:
-#    repositories:
-#      - repository: 'DocnetCoreWebappDockerCICD' 
-#        type: github
-#        endpoint: 'github.com_lalit40070'
-#        name: lalit40070/DocnetCoreWebappDockerCICD
-#        ref: master
-      #  trigger:
-      #  - master
-      #  - dev
-      #  - QA
-trigger:
-  branches:
-    include:
-    - master
-    - dev
-    - QA
+resources:
+   repositories:
+     - repository: 'DocnetCoreWebappDockerCICD' 
+       type: github
+       endpoint: 'github.com_lalit40070'
+       name: lalit40070/DocnetCoreWebappDockerCICD
+       ref: master
+       trigger:
+         branches:
+           include:
+            - master
+            - dev
+            - QA
+# trigger:
+#   branches:
+#     include:
+#     - master
+#     - dev
+#     - QA
 
 variables:
   imageName: 'lalitkr2506/azurerepo:$(build.buildNumber)'
