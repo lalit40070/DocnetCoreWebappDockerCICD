@@ -57,6 +57,7 @@ stages:
                        echo "Deploying on QA" 
                        ssh root@deployment-QA docker run -itd $(imageName) 
                    else
+                       echo "test"
                        echo "Deploying on master"
                        ssh root@deployment-master docker run -itd $(imageName) 
                    fi
