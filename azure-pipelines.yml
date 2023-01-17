@@ -61,7 +61,7 @@ stages:
       #                  ssh root@deployment-master echo "Deploying on $HOSTNAME" && docker run -itd $(imageName) 
       #              fi
 - stage: Deployment
-  dependsOn: "build"
+  #dependsOn: "build"
   displayName: Deployment
   jobs:
   - job: Deploy
