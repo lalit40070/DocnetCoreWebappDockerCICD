@@ -8,7 +8,7 @@ resources:
        type: github
        endpoint: 'github.com_lalit40070'
        name: lalit40070/DocnetCoreWebappDockerCICD
-       ref: master
+       #ref: master
        trigger:
          branches:
            include:
