@@ -7,6 +7,7 @@ resources:
      - repository: 'DocnetCoreWebappDockerCICD' 
        type: github
        endpoint: 'github.com_lalit40070'
+       name: lalit40070/DocnetCoreWebappDockerCICD
        ref: master
        trigger:
        - master
