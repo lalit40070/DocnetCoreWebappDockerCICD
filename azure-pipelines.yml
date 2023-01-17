@@ -68,7 +68,7 @@ stages:
     pool:
       name: 'DemoAg'
       demands:
-        - Agent.Name -equals agent-2
+        - Agent.Name -equals agent-3
     steps:
        - task: CmdLine@2
          inputs:
