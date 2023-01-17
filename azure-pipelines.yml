@@ -57,7 +57,7 @@ stages:
                        echo "Deploying on $HOSTNAME" 
                        ssh root@deployment-QA echo "Deploying on $HOSTNAME" && docker run -itd $(imageName) 
                    else
-                       echo "Deploying on $HOSTNAME"
+                       echo "Deploying in $HOSTNAME"
                        ssh root@deployment-master echo "Deploying on $HOSTNAME" && docker run -itd $(imageName) 
                    fi
 # - stage: Deployment
