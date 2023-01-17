@@ -13,8 +13,8 @@ resources:
          branches:
            include:
             - master
-            - dev
-            - QA
+            - dev/*
+            - QA/*
 # trigger:
 #   branches:
 #     include:
