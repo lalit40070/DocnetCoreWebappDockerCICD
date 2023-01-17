@@ -42,7 +42,7 @@ stages:
           restartPolicy: always
       - task: CmdLine@2
         inputs:
-          script: 'ssh root@deployment-QA docker run -itd $(imageName)'
+          script: 'ssh root@deployment-master docker run -itd $(imageName)'
       # - task: CmdLine@2
       #   inputs:
       #     script: |
