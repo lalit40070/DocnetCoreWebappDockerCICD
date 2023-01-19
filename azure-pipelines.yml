@@ -2,25 +2,11 @@
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
-resources:
-   repositories:
-     - repository: 'DocnetCoreWebappDockerCICD' 
-       type: github
-       endpoint: 'github.com_lalit40070'
-       name: lalit40070/DocnetCoreWebappDockerCICD
-       #ref: master
-       trigger:
-         branches:
-           include:
-            - master
-            - dev/*
-            - QA/*
-# trigger:
-#   branches:
-#     include:
-#     - master
-#     - dev
-#     - QA
+
+trigger:
+- QA
+- master
+- dev
 
 variables:
   imageName: 'lalitkr2506/azurerepo:$(build.buildNumber)'
@@ -45,6 +31,8 @@ stages:
           dockerFile: Dockerfile
           imageName: $(imageName)
           restartPolicy: always
+      
+      
       - task: Docker@1
         displayName: 'Push an image'
         inputs:
@@ -56,7 +44,7 @@ stages:
           restartPolicy: always
       # - task: CmdLine@2
       #   inputs:
-      #     script: 'ssh root@deployment-master docker run -itd $(imageName)'
+      #     script: 'ssh root@deployment docker run -itd $(imageName)'
       - task: CmdLine@2
         inputs:
           script: |
@@ -64,26 +52,23 @@ stages:
                    echo "branch is $branch" 
                    if [ "$branch" == "dev" ] 
                    then 
-                      echo "Deploying on dev"
-                      ssh root@deployment-dev docker run -itd $(imageName) 
+                          server=deployment-dev 
                    elif [ "$branch" == "QA" ] 
-                   then 
-                       echo "Deploying on QA" 
-                       ssh root@deployment-QA docker run -itd $(imageName) 
+                   then   
+                        server=deployment-QA
                    else
-                       echo "test"
-                       echo "Deploying on master"
-                       ssh root@deployment-master docker run -itd $(imageName) 
+                       server=deployment-master
                    fi
+                     ssh root@"$server" docker run -itd $(imageName)
 # - stage: Deployment
-#   #dependsOn: "build"
+#   dependsOn: "build"
 #   displayName: Deployment
 #   jobs:
 #   - job: Deploy
 #     pool:
 #       name: 'DemoAg'
 #       demands:
-#         - Agent.Name -equals agent-3
+#         - Agent.Name -equals Deployment
 #     steps:
 #        - task: CmdLine@2
 #          inputs:
