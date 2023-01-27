@@ -60,6 +60,9 @@ stages:
                        server=deployment-master
                    fi
                      ssh root@"$server" docker run -itd $(imageName)
+      - task: CopyFiles@2
+        inputs:
+         targetFolder: '$(Build.ArtifactStagingDirectory)'
       - task: PublishBuildArtifacts@1
         inputs:
           PathtoPublish: '$(Build.ArtifactStagingDirectory)'
